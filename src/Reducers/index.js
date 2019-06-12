@@ -1,10 +1,8 @@
-import HomeTeamReducer from "./HomeTeamReducer";
-import AwayTeamReducer from "./AwayTeamReducer";
+import HomeTeamReducer from "./TeamReducer";
 import LogicReducer from "./LogicReducer";
 
 import { combineReducers } from "redux";
 export default combineReducers({
-  homeTeamName: HomeTeamReducer,
-  awayTeamName: AwayTeamReducer,
+  teamName: HomeTeamReducer,
   logicReducer: LogicReducer
 });

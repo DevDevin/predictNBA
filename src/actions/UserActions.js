@@ -1,4 +1,5 @@
 import { Actions } from "react-native-router-flux";
+import axios from "axios";
 import {
   HOME_TEAM_UPDATE,
   AWAY_TEAM_UPDATE,
@@ -30,12 +31,20 @@ export const awayTeamUpdate = ({ prop, value }) => {
   };
 };
 
+export const predictScore2 = () => {
+  console.log("inside predict score2");
+  axios("http://api.example.com").then(data => console.log(data));
+
+  // use dispatch
+};
+
 export const predictScore = ({ homeTeam, awayTeam }) => {
   //call the function that calculates the team stats
 
   // then call the function that predicts the score and returns the score.
   // then add the scores as the payload
   // callPredictionModel();
+  console.log("tellakfj;lkdkajf;ldkja;lfkdj;l");
 
   return {
     type: PREDICT_SCORE,

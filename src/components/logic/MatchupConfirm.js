@@ -1,21 +1,17 @@
 import React, { Component } from "react";
-import { predictScore } from "../../actions/UserActions";
+import { predictScore, predictScore2 } from "../../actions/UserActions";
 import { connect } from "react-redux";
 import { Card, CardSection, Button } from "../common";
 import { Text } from "react-native";
 
 class MatchupConfirm extends Component {
   componentWillMount() {
-    console.log(
-      "homeTeamName: ",
-      this.props.homeTeamName,
-      "awayTeamName: ",
-      this.props.awayTeamName
-    );
+    console.log("teamName: ", this.props.teamName);
   }
   onButtonPress() {
     const homeTeam = "Rockets";
     const awayTeam = "Jazz";
+    this.props.predictScore2();
     this.props.predictScore(homeTeam, awayTeam);
   }
   render() {
@@ -24,6 +20,12 @@ class MatchupConfirm extends Component {
         <CardSection>
           <Text>Confirm Matchup</Text>
         </CardSection>
+        <CardSection>
+          <Text>
+            {this.props.teamName.homeTeam} vs {this.props.teamName.awayTeam}
+          </Text>
+        </CardSection>
+        <CardSection />
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>Predict Score</Button>
         </CardSection>
@@ -34,12 +36,11 @@ class MatchupConfirm extends Component {
 
 const mapStateToProps = state => {
   return {
-    homeTeamName: state.homeTeamName,
-    awayTeamName: state.awayTeamName
+    teamName: state.teamName
   };
 };
 
 export default connect(
   mapStateToProps,
-  { predictScore }
+  { predictScore, predictScore2 }
 )(MatchupConfirm);
