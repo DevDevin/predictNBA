@@ -31,12 +31,31 @@ export const awayTeamUpdate = ({ prop, value }) => {
   };
 };
 
-export const predictScore2 = () => {
-  console.log("inside predict score2");
-  axios("http://api.example.com").then(data => console.log(data));
+export const predictScore3 = dispatch => {
+  return dispatch => {
+    console.log("inside predict score2");
+    axios("http://api.example.com").then(data => dispatch(console.log(data)));
+  };
 
   // use dispatch
 };
+
+export function predictScore2() {
+  return function action(dispatch) {
+    // dispatch({ type: FETCH_OFFERS });
+
+    const request = axios({
+      method: "GET",
+      url: `${BASE_URL}/offers`,
+      headers: []
+    });
+
+    return request.then(
+      response => dispatch(fetchOffersSuccess(response)),
+      err => dispatch(fetchOffersError(err))
+    );
+  };
+}
 
 export const predictScore = ({ homeTeam, awayTeam }) => {
   //call the function that calculates the team stats
