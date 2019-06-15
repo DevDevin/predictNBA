@@ -32,6 +32,7 @@ class HomeTeam extends Component {
             <Picker.Item label="Jazz" value="Jazz" />
           </Picker>
         </CardSection>
+        <Text>{this.props.homeTeam}</Text>
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>
             Choose Away Team
@@ -51,7 +52,7 @@ const styles = {
 
 const mapStateToProps = state => {
   return {
-    homeTeam: state.homeTeam
+    homeTeam: state.team.homeTeam
   };
 };
 

@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import { Actions } from "react-native-router-flux";
-import { Picker } from "react-native";
+import { Picker, Text } from "react-native";
 import { connect } from "react-redux";
 import { Card, CardSection, Button } from "../common";
-import { awayTeamUpdate } from "../../actions/UserActions";
+import { awayTeamUpdate, setTeamData } from "../../actions/UserActions";
 
 class AwayTeam extends Component {
   onButtonPress() {
-    Actions.matchupConfirm();
-    //this.props.goToAwayTeam();
+    // do an api call here then pass the data into the setTeamData function call as an object
+
+    this.props.setTeamData();
+    Actions.matchupConfirm({ type: "reset" });
   }
   render() {
     return (
@@ -30,6 +32,7 @@ class AwayTeam extends Component {
             <Picker.Item label="Jazz" value="Jazz" />
           </Picker>
         </CardSection>
+        <Text>{this.props.awayTeam}</Text>
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>Next</Button>
         </CardSection>
@@ -38,7 +41,13 @@ class AwayTeam extends Component {
   }
 }
 
+mapStateToProps = state => {
+  return {
+    awayTeam: state.team.awayTeam
+  };
+};
+
 export default connect(
-  null,
-  { awayTeamUpdate }
+  mapStateToProps,
+  { awayTeamUpdate, setTeamData }
 )(AwayTeam);

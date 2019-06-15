@@ -3,7 +3,7 @@ import axios from "axios";
 import {
   HOME_TEAM_UPDATE,
   AWAY_TEAM_UPDATE,
-  PREDICT_SCORE
+  SET_TEAM_DATA
 } from "../actions/Types";
 import { callPredictionModel } from "../components/Calc/ScoreCalc";
 
@@ -31,42 +31,19 @@ export const awayTeamUpdate = ({ prop, value }) => {
   };
 };
 
-export const predictScore3 = dispatch => {
-  return dispatch => {
-    console.log("inside predict score2");
-    axios("http://api.example.com").then(data => dispatch(console.log(data)));
-  };
-
-  // use dispatch
-};
-
-export function predictScore2() {
-  return function action(dispatch) {
-    // dispatch({ type: FETCH_OFFERS });
-
-    const request = axios({
-      method: "GET",
-      url: `${BASE_URL}/offers`,
-      headers: []
-    });
-
-    return request.then(
-      response => dispatch(fetchOffersSuccess(response)),
-      err => dispatch(fetchOffersError(err))
-    );
-  };
-}
-
-export const predictScore = ({ homeTeam, awayTeam }) => {
+export const predictScore = () => {
   //call the function that calculates the team stats
-
   // then call the function that predicts the score and returns the score.
   // then add the scores as the payload
   // callPredictionModel();
-  console.log("tellakfj;lkdkajf;ldkja;lfkdj;l");
+  console.log("inside predictScore");
+};
 
+export const setTeamData = () => {
+  // TODO: response object from api call will be passed in as a parameter and then set as the payload
+  console.log("inside setTeamData");
   return {
-    type: PREDICT_SCORE,
-    payload: { homeTeam, awayTeam }
+    type: SET_TEAM_DATA,
+    payload: "test"
   };
 };
