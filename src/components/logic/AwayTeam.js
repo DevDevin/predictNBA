@@ -7,7 +7,8 @@ import { awayTeamUpdate, setTeamData } from "../../actions/UserActions";
 
 class AwayTeam extends Component {
   onButtonPress() {
-    // do an api call here then pass the data into the setTeamData function call as an object
+    // do an api call here  to predict the home team data then pass the data into the setTeamData() function call as an object
+    // do an api call here  to predict the away team data then pass the data into the setTeamData() function call as an object
 
     this.props.setTeamData();
     Actions.matchupConfirm({ type: "reset" });

@@ -12,6 +12,8 @@ class MatchupConfirm extends Component {
   onButtonPress() {
     var url =
       "https://ussouthcentral.services.azureml.net/workspaces/25728ac0a79b4b5dbfac3a35d1d00490/services/20fcedfaf3da44ca95df078c6ba70b61/execute?api-version=2.0&format=swagger";
+
+    /////////////////////////////////////////////////// predict homeTeam's score ////////////////////////////////////////////////////////////////
     fetch(url, {
       method: "POST",
       body: JSON.stringify({
@@ -73,7 +75,71 @@ class MatchupConfirm extends Component {
     })
       .then(res => res.json())
       .catch(error => console.log("Error: ", error))
-      .then(response => console.log("Success:", response));
+      .then(response => console.log("Success! homeTeam's score: ", response));
+
+    ////////////////////////////////////// predict the oppTeam's score //////////////////////////////////////////////////////
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        Inputs: {
+          input1: [
+            {
+              Team: "",
+              Matchup: "",
+              HomeOrAway: "1",
+              Pts: "1",
+              FGM: this.props.teamData.OppFGM,
+              FGA: this.props.teamData.OppFGA,
+              FGPerc: this.props.teamData.OppFGPercent,
+              ThreesMade: this.props.teamData.OppThreesMade,
+              ThreesAttempted: this.props.teamData.OppThreesAttemped,
+              ThreePercent: this.props.teamData.OppThreePercent,
+              FTM: this.props.teamData.OppFTM,
+              FTA: this.props.teamData.OppFTA,
+              FTPercent: this.props.teamData.OppFTPercent,
+              OREB: this.props.teamData.OppOREB,
+              DREB: this.props.teamData.OppDREB,
+              REB: this.props.teamData.OppREB,
+              AST: this.props.teamData.OppAST,
+              TOV: this.props.teamData.OppTOV,
+              STL: this.props.teamData.OppSTL,
+              BLK: this.props.teamData.OppBLK,
+              PF: this.props.teamData.OppPF,
+              OppTeam: "",
+              OppPts: "1",
+              OppFGM: this.props.teamData.FGM,
+              OppFGA: this.props.teamData.FGA,
+              OppFGPercent: this.props.teamData.FGPerc,
+              OppThreesMade: this.props.teamData.ThreesMade,
+              OppThreesAttemped: this.props.teamData.ThreesAttempted,
+              OppThreePercent: this.props.teamData.ThreePercent,
+              OppFTM: this.props.teamData.FTM,
+              OppFTA: this.props.teamData.FTA,
+              OppFTPercent: this.props.teamData.FTPercent,
+              OppOREB: this.props.teamData.OREB,
+              OppDREB: this.props.teamData.DREB,
+              OppREB: this.props.teamData.REB,
+              OppAST: this.props.teamData.AST,
+              OppTOV: this.props.teamData.TOV,
+              OppSTL: this.props.teamData.STL,
+              OppBLK: this.props.teamData.BLK,
+              OppPF: this.props.teamData.PF
+            }
+          ]
+        },
+        GlobalParameters: {}
+      }),
+      headers: new Headers({
+        "cache-control": "no-cache",
+        "Postman-Token": "4ed608c5-b194-4d7e-a202-19e20d3e1128",
+        Authorization:
+          "Bearer JubkNWztb3aZBqk/dF4wDEl7dRkh+G75+CP6+SOyKgzfwIreNgqETqzf7NOdTINHd5Z1bnKlDdiik4fdqn2lnw==",
+        "Content-Type": "application/json"
+      })
+    })
+      .then(res => res.json())
+      .catch(error => console.log("Error: ", error))
+      .then(response => console.log("Success! oppTeam's Score: ", response));
   }
   render() {
     return (

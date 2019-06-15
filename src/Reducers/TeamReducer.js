@@ -21,7 +21,7 @@ export default (state = INITIAL_STATE, action) => {
       };
     case SET_TEAM_DATA:
       console.log("inside of SET_TEAM_DATA");
-      // TODO: THE payload will be the response object from the api call. can then set team data with payload
+      // TODO: THE payload will be the response objects from the api call for both the home and away team data. can then set team data with payload
       return {
         ...state,
         teamData: {
