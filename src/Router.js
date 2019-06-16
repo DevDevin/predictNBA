@@ -4,6 +4,7 @@ import Home from "./components/home/Home";
 import HomeTeam from "./components/logic/HomeTeam";
 import AwayTeam from "./components/logic/AwayTeam";
 import MatchupConfirm from "./components/logic/MatchupConfirm";
+import FinalScore from "./components/logic/FinalScore";
 
 const RouterComponent = () => {
   return (
@@ -22,6 +23,7 @@ const RouterComponent = () => {
           component={MatchupConfirm}
           title="Confirm Matchup"
         />
+        <Scene key="finalScore" component={FinalScore} title="Final Score" />
       </Scene>
     </Router>
   );

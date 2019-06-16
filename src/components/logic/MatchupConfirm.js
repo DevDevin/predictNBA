@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { predictScore } from "../../actions/UserActions";
+import { Actions } from "react-native-router-flux";
+import {
+  predictScore,
+  setHomeScore,
+  setOppScore
+} from "../../actions/UserActions";
 import { connect } from "react-redux";
 import { Card, CardSection, Button } from "../common";
 import { Text } from "react-native";
@@ -75,7 +80,10 @@ class MatchupConfirm extends Component {
     })
       .then(res => res.json())
       .catch(error => console.log("Error: ", error))
-      .then(response => console.log("Success! homeTeam's score: ", response));
+      .then(response => {
+        console.log("Success! homeTeam's score: ", response);
+        this.props.setHomeScore(response);
+      });
 
     ////////////////////////////////////// predict the oppTeam's score //////////////////////////////////////////////////////
     fetch(url, {
@@ -139,7 +147,11 @@ class MatchupConfirm extends Component {
     })
       .then(res => res.json())
       .catch(error => console.log("Error: ", error))
-      .then(response => console.log("Success! oppTeam's Score: ", response));
+      .then(response => {
+        console.log("Success! oppTeam's Score: ", response);
+        this.props.setOppScore(response);
+      })
+      .then(() => Actions.finalScore());
   }
   render() {
     return (
@@ -170,5 +182,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { predictScore }
+  { predictScore, setHomeScore, setOppScore }
 )(MatchupConfirm);

@@ -1,9 +1,10 @@
 import { Actions } from "react-native-router-flux";
-import axios from "axios";
 import {
   HOME_TEAM_UPDATE,
   AWAY_TEAM_UPDATE,
-  SET_TEAM_DATA
+  SET_TEAM_DATA,
+  SET_HOME_SCORE,
+  SET_OPP_SCORE
 } from "../actions/Types";
 import { callPredictionModel } from "../components/Calc/ScoreCalc";
 
@@ -45,5 +46,21 @@ export const setTeamData = () => {
   return {
     type: SET_TEAM_DATA,
     payload: "test"
+  };
+};
+
+export const setHomeScore = response => {
+  console.log("inside setHomeScore");
+  return {
+    type: SET_HOME_SCORE,
+    payload: response
+  };
+};
+
+export const setOppScore = response => {
+  console.log("inside setOppScore");
+  return {
+    type: SET_OPP_SCORE,
+    payload: response
   };
 };
