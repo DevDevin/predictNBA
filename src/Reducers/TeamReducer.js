@@ -7,7 +7,9 @@ import {
 } from "../actions/Types";
 
 const INITIAL_STATE = {
-  homeTeam: ""
+  homeTeam: "",
+  oppScore: {},
+  homeScore: {}
 };
 
 export default (state = INITIAL_STATE, action) => {

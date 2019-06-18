@@ -13,6 +13,8 @@ class FinalScore extends Component {
       <CardSection>
         <Card>
           <Text>Final Score!</Text>
+          <Text>HomeScore: </Text>
+          <Text>OppScore: {this.props.oppFinalScore}</Text>
         </Card>
       </CardSection>
     );
@@ -21,7 +23,7 @@ class FinalScore extends Component {
 
 mapStateToProps = state => {
   return {
-    homeFinalScore: state.team.homeScore,
+    homeFinalScore: state.team.homeScore, // maybe i can manipulate the value sometime before this point in the reducer.
     oppFinalScore: state.team.oppScore
   };
 };

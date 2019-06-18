@@ -81,8 +81,11 @@ class MatchupConfirm extends Component {
       .then(res => res.json())
       .catch(error => console.log("Error: ", error))
       .then(response => {
-        console.log("Success! homeTeam's score: ", response);
-        this.props.setHomeScore(response);
+        console.log(
+          "Success! homeTeam's score: ",
+          response.Results.output1[0]["Scored Labels"]
+        );
+        this.props.setHomeScore(response.Results.output1[0]["Scored Labels"]);
       });
 
     ////////////////////////////////////// predict the oppTeam's score //////////////////////////////////////////////////////
@@ -148,8 +151,11 @@ class MatchupConfirm extends Component {
       .then(res => res.json())
       .catch(error => console.log("Error: ", error))
       .then(response => {
-        console.log("Success! oppTeam's Score: ", response);
-        this.props.setOppScore(response);
+        console.log(
+          "Success! oppTeam's Score: ",
+          response.Results.output1[0]["Scored Labels"]
+        );
+        this.props.setOppScore(response.Results.output1[0]["Scored Labels"]);
       })
       .then(() => Actions.finalScore());
   }
