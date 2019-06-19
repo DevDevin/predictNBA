@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, Picker } from "react-native";
+import { View, Text, Picker, Image } from "react-native";
 import { connect } from "react-redux";
 import { Actions } from "react-native-router-flux";
 import { goToAwayTeam, homeTeamUpdate } from "../../actions/UserActions";
@@ -13,9 +13,10 @@ class HomeTeam extends Component {
   }
 
   render() {
+    const { imageStyle, cardSectionStyle, buttonStyle } = styles;
     return (
       <Card>
-        <CardSection>
+        <CardSection style={cardSectionStyle}>
           <Picker
             style={{ flex: 1 }}
             selectedValue={this.props.homeTeam}
@@ -33,7 +34,13 @@ class HomeTeam extends Component {
           </Picker>
         </CardSection>
         <Text>{this.props.homeTeam}</Text>
-        <CardSection>
+        <CardSection style={cardSectionStyle}>
+          <Image
+            style={imageStyle}
+            source={require("../../Images/jazzLogo.png")}
+          />
+        </CardSection>
+        <CardSection style={cardSectionStyle}>
           <Button onPress={this.onButtonPress.bind(this)}>
             Choose Away Team
           </Button>
@@ -47,6 +54,24 @@ const styles = {
   pickerTextStyle: {
     fontSize: 18,
     paddingLeft: 20
+  },
+  imageStyle: {
+    width: 300,
+    height: 300
+  },
+  cardSectionStyle: {
+    justifyContent: "center",
+    alignItems: "stretch"
+  },
+  containerStyle: {
+    backgroundColor: "rgba(0,0,0,0.75",
+    position: "relative",
+    flex: 1,
+    justifyContent: "center"
+  },
+  buttonStyle: {
+    flex: 1,
+    alignItems: "stretch"
   }
 };
 

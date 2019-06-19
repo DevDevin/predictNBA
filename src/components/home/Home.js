@@ -11,7 +11,7 @@ class Home extends Component {
     //this.props.goClick();
   }
   render() {
-    const { containerStyle, textStyle, cardSectionStyle, buttonStyle } = styles;
+    const { cardSectionStyle, buttonStyle } = styles;
     return (
       <Card>
         <CardSection style={cardSectionStyle}>
@@ -32,12 +32,7 @@ const styles = {
     justifyContent: "center",
     alignItems: "stretch"
   },
-  textStyle: {
-    flex: 1,
-    fontSize: 18,
-    textAlign: "center",
-    lineHeight: 40
-  },
+
   containerStyle: {
     backgroundColor: "rgba(0,0,0,0.75",
     position: "relative",

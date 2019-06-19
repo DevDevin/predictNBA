@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Actions } from "react-native-router-flux";
-import { Picker, Text } from "react-native";
+import { Picker, Text, Image } from "react-native";
 import { connect } from "react-redux";
 import { Card, CardSection, Button } from "../common";
 import { awayTeamUpdate, setTeamData } from "../../actions/UserActions";
@@ -14,9 +14,10 @@ class AwayTeam extends Component {
     Actions.matchupConfirm({ type: "reset" });
   }
   render() {
+    const { imageStyle, cardSectionStyle } = styles;
     return (
       <Card>
-        <CardSection>
+        <CardSection style={cardSectionStyle}>
           <Picker
             style={{ flex: 1 }}
             selectedValue={this.props.shift}
@@ -34,7 +35,13 @@ class AwayTeam extends Component {
           </Picker>
         </CardSection>
         <Text>{this.props.awayTeam}</Text>
-        <CardSection>
+        <CardSection style={cardSectionStyle}>
+          <Image
+            style={imageStyle}
+            source={require("../../Images/raptorsLogo.png")}
+          />
+        </CardSection>
+        <CardSection style={cardSectionStyle}>
           <Button onPress={this.onButtonPress.bind(this)}>Next</Button>
         </CardSection>
       </Card>
@@ -46,6 +53,31 @@ mapStateToProps = state => {
   return {
     awayTeam: state.team.awayTeam
   };
+};
+
+const styles = {
+  pickerTextStyle: {
+    fontSize: 18,
+    paddingLeft: 20
+  },
+  imageStyle: {
+    width: 300,
+    height: 300
+  },
+  cardSectionStyle: {
+    justifyContent: "center",
+    alignItems: "stretch"
+  },
+  containerStyle: {
+    backgroundColor: "rgba(0,0,0,0.75",
+    position: "relative",
+    flex: 1,
+    justifyContent: "center"
+  },
+  buttonStyle: {
+    flex: 1,
+    alignItems: "stretch"
+  }
 };
 
 export default connect(
