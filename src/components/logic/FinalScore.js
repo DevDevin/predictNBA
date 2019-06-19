@@ -13,7 +13,7 @@ class FinalScore extends Component {
       <CardSection>
         <Card>
           <Text>Final Score!</Text>
-          <Text>HomeScore: </Text>
+          <Text>HomeScore: {this.props.homeFinalScore}</Text>
           <Text>OppScore: {this.props.oppFinalScore}</Text>
         </Card>
       </CardSection>

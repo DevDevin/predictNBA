@@ -50,7 +50,7 @@ export const setTeamData = () => {
 };
 
 export const setHomeScore = response => {
-  console.log("inside setHomeScore");
+  console.log("inside setHomeScore", response);
   return {
     type: SET_HOME_SCORE,
     payload: response
@@ -58,7 +58,7 @@ export const setHomeScore = response => {
 };
 
 export const setOppScore = response => {
-  console.log("inside setOppScore");
+  console.log("inside setOppScore", response);
   return {
     type: SET_OPP_SCORE,
     payload: response

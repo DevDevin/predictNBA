@@ -1,5 +1,5 @@
 import React from "react";
-import { Scene, Router, Actions } from "react-native-router-flux";
+import { Scene, Router } from "react-native-router-flux";
 import Home from "./components/home/Home";
 import HomeTeam from "./components/logic/HomeTeam";
 import AwayTeam from "./components/logic/AwayTeam";
@@ -8,7 +8,7 @@ import FinalScore from "./components/logic/FinalScore";
 
 const RouterComponent = () => {
   return (
-    <Router sceneStyle={{ paddingTop: 65 }}>
+    <Router sceneStyle={{ paddingTop: 10 }}>
       <Scene key="root" hideNavBar>
         <Scene key="home">
           <Scene key="home" component={Home} title="Predict NBA" initial />
