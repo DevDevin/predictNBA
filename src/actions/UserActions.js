@@ -64,3 +64,10 @@ export const setOppScore = response => {
     payload: response
   };
 };
+
+export const setHomeTeamImageString = homeTeam => {
+  imageString = `../../Images/${homeTeam}.png`;
+  console.log("imageString: ", imageString);
+  //update the url string state with urlString
+  return imageString;
+};

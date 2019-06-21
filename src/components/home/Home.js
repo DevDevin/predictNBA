@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 import { Image } from "react-native";
 import { connect } from "react-redux";
+import { homeTeamUpdate, awayTeamUpdate } from "../../actions/UserActions";
 import { Card, CardSection, Button } from "../common";
 import { goClick } from "../../actions/UserActions";
 import { Actions } from "react-native-router-flux";
 
 class Home extends Component {
+  componentWillMount() {
+    this.props.homeTeamUpdate({ prop: "homeTeam", value: "all" });
+    this.props.homeTeamUpdate({ prop: "awayTeam", value: "all" });
+  }
+
   onButtonPress() {
     Actions.main();
     //this.props.goClick();
@@ -15,7 +21,7 @@ class Home extends Component {
     return (
       <Card>
         <CardSection style={cardSectionStyle}>
-          <Image source={require("../../Images/nbaLogo.png")} />
+          <Image source={require(`../../Images/nbaLogo.png`)} />
         </CardSection>
         <CardSection style={cardSectionStyle}>
           <Button style={buttonStyle} onPress={this.onButtonPress.bind(this)}>
@@ -47,5 +53,5 @@ const styles = {
 
 export default connect(
   null,
-  { goClick }
+  { goClick, homeTeamUpdate, awayTeamUpdate }
 )(Home);
