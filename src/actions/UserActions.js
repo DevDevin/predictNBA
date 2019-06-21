@@ -4,7 +4,8 @@ import {
   AWAY_TEAM_UPDATE,
   SET_TEAM_DATA,
   SET_HOME_SCORE,
-  SET_OPP_SCORE
+  SET_OPP_SCORE,
+  SET_LOADING_FALSE
 } from "../actions/Types";
 import { callPredictionModel } from "../components/Calc/ScoreCalc";
 
@@ -37,12 +38,10 @@ export const predictScore = () => {
   // then call the function that predicts the score and returns the score.
   // then add the scores as the payload
   // callPredictionModel();
-  console.log("inside predictScore");
 };
 
 export const setTeamData = () => {
   // TODO: response object from api call will be passed in as a parameter and then set as the payload
-  console.log("inside setTeamData");
   return {
     type: SET_TEAM_DATA,
     payload: "test"
@@ -50,7 +49,6 @@ export const setTeamData = () => {
 };
 
 export const setHomeScore = response => {
-  console.log("inside setHomeScore", response);
   return {
     type: SET_HOME_SCORE,
     payload: response
@@ -58,7 +56,6 @@ export const setHomeScore = response => {
 };
 
 export const setOppScore = response => {
-  console.log("inside setOppScore", response);
   return {
     type: SET_OPP_SCORE,
     payload: response
@@ -70,4 +67,12 @@ export const setHomeTeamImageString = homeTeam => {
   console.log("imageString: ", imageString);
   //update the url string state with urlString
   return imageString;
+};
+
+export const setLoadingFalse = () => {
+  console.log("inside set loading false");
+  return {
+    type: SET_LOADING_FALSE,
+    payload: "false"
+  };
 };

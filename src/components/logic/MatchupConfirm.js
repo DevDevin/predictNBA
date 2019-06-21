@@ -3,10 +3,11 @@ import { Actions } from "react-native-router-flux";
 import {
   predictScore,
   setHomeScore,
-  setOppScore
+  setOppScore,
+  setLoadingFalse
 } from "../../actions/UserActions";
 import { connect } from "react-redux";
-import { Card, CardSection, Button } from "../common";
+import { Card, CardSection, Button, Spinner } from "../common";
 import { Text } from "react-native";
 
 class MatchupConfirm extends Component {
@@ -158,38 +159,46 @@ class MatchupConfirm extends Component {
             this.props.setOppScore(
               response.Results.output1[0]["Scored Labels"]
             );
+            this.props.setLoadingFalse();
           })
           .then(() => Actions.finalScore());
       });
   }
   render() {
-    return (
-      <Card>
-        <CardSection>
-          <Text>Confirm Matchup</Text>
-        </CardSection>
-        <CardSection>
-          <Text>
-            {this.props.teamName.homeTeam} vs {this.props.teamName.awayTeam}
-          </Text>
-        </CardSection>
-        <CardSection />
-        <CardSection>
-          <Button onPress={this.onButtonPress.bind(this)}>Predict Score</Button>
-        </CardSection>
-      </Card>
-    );
+    if (this.props.loading) {
+      return <Spinner size="large" />;
+    } else {
+      return (
+        <Card>
+          <CardSection>
+            <Text>Confirm Matchup</Text>
+          </CardSection>
+          <CardSection>
+            <Text>
+              {this.props.teamName.homeTeam} vs {this.props.teamName.awayTeam}
+            </Text>
+          </CardSection>
+          <CardSection />
+          <CardSection>
+            <Button onPress={this.onButtonPress.bind(this)}>
+              Predict Score
+            </Button>
+          </CardSection>
+        </Card>
+      );
+    }
   }
 }
 
 const mapStateToProps = state => {
   return {
     teamName: state.team,
-    teamData: state.team.teamData
+    teamData: state.team.teamData,
+    loading: state.team.loading
   };
 };
 
 export default connect(
   mapStateToProps,
-  { predictScore, setHomeScore, setOppScore }
+  { predictScore, setHomeScore, setOppScore, setLoadingFalse }
 )(MatchupConfirm);

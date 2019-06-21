@@ -10,7 +10,7 @@ class AwayTeam extends Component {
     image: (
       <Image
         style={{
-          width: 300,
+          width: 400,
           height: 300
         }}
         source={require("../../Images/all.png")}

@@ -3,7 +3,8 @@ import {
   AWAY_TEAM_UPDATE,
   SET_TEAM_DATA,
   SET_HOME_SCORE,
-  SET_OPP_SCORE
+  SET_OPP_SCORE,
+  SET_LOADING_FALSE
 } from "../actions/Types";
 
 const INITIAL_STATE = {
@@ -17,7 +18,11 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case HOME_TEAM_UPDATE:
       console.log("test:", action.payload);
-      return { ...state, [action.payload.prop]: action.payload.value };
+      return {
+        ...state,
+        [action.payload.prop]: action.payload.value,
+        loading: false
+      };
     case AWAY_TEAM_UPDATE:
       return {
         ...state,
@@ -26,16 +31,22 @@ export default (state = INITIAL_STATE, action) => {
     case SET_HOME_SCORE:
       return {
         ...state,
-        homeScore: action.payload
+        homeScore: action.payload,
+        loading: true
       };
     case SET_OPP_SCORE:
       return {
         ...state,
         oppScore: action.payload
       };
+    case SET_LOADING_FALSE:
+      console.log("inside of set_loading_false");
+      return {
+        ...state,
+        loading: false
+      };
 
     case SET_TEAM_DATA:
-      console.log("inside of SET_TEAM_DATA");
       // TODO: THE payload will be the response objects from the api call for both the home and away team data. can then set team data with payload
       return {
         ...state,
