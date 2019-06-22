@@ -27,6 +27,10 @@ class HomeTeam extends Component {
     homeTeam: ""
   };
 
+  componentWillMount() {
+    console.log("homeImage: ", this.props.homeImage);
+  }
+
   onButtonPress() {
     Actions.awayTeam();
   }
@@ -133,6 +137,7 @@ class HomeTeam extends Component {
         </CardSection>
         <Text>{this.props.homeTeam}</Text>
         <CardSection style={cardSectionStyle}>{this.state.image}</CardSection>
+
         <CardSection style={cardSectionStyle}>
           <Button onPress={this.onButtonPress.bind(this)}>
             Choose Away Team
@@ -170,7 +175,8 @@ const styles = {
 
 const mapStateToProps = state => {
   return {
-    homeTeam: state.team.homeTeam
+    homeTeam: state.team.homeTeam,
+    homeImage: state.team.homeImage
   };
 };
 

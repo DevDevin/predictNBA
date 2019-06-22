@@ -8,12 +8,181 @@ import {
 } from "../../actions/UserActions";
 import { connect } from "react-redux";
 import { Card, CardSection, Button, Spinner } from "../common";
-import { Text } from "react-native";
+import { Text, Image } from "react-native";
 
 class MatchupConfirm extends Component {
+  state = {
+    homeImage: (
+      <Image
+        style={{
+          width: 300,
+          height: 200
+        }}
+        source={require("../../Images/all.png")}
+      />
+    ),
+    oppImage: (
+      <Image
+        style={{
+          width: 300,
+          height: 200
+        }}
+        source={require("../../Images/blazers.jpeg")}
+      />
+    ),
+    imageStyle: {
+      width: 300,
+      height: 200
+    },
+    homeTeam: ""
+  };
+
   componentWillMount() {
-    console.log("teamName: ", this.props.teamName);
-    console.log("teamData: ", this.props.teamData);
+    // get the home team image
+    switch (this.props.teamName.homeTeam) {
+      case "Bucks":
+        this.setState({
+          homeImage: (
+            <Image
+              style={this.state.imageStyle}
+              source={require("../../Images/bucks.jpg")}
+            />
+          )
+        });
+        break;
+      case "blazerss":
+        this.setState({
+          homeImage: (
+            <Image
+              style={this.state.imageStyle}
+              source={require("../../Images/blazers.jpeg")}
+            />
+          )
+        });
+        break;
+      case "Jazz":
+        this.setState({
+          homeImage: (
+            <Image
+              style={this.state.imageStyle}
+              source={require("../../Images/jazz.png")}
+            />
+          )
+        });
+        break;
+      case "Nuggets":
+        this.setState({
+          homeImage: (
+            <Image
+              style={this.state.imageStyle}
+              source={require("../../Images/nuggets.jpg")}
+            />
+          )
+        });
+        break;
+      case "Rockets":
+        this.setState({
+          homeImage: (
+            <Image
+              style={this.state.imageStyle}
+              source={require("../../Images/rockets.png")}
+            />
+          )
+        });
+        break;
+      case "Warriors":
+        this.setState({
+          homeImage: (
+            <Image
+              style={this.state.imageStyle}
+              source={require("../../Images/warriors.png")}
+            />
+          )
+        });
+        break;
+      default:
+        this.setState({
+          homeImage: (
+            <Image
+              style={this.state.imageStyle}
+              source={require("../../Images/all.png")}
+            />
+          )
+        });
+    }
+
+    //get the away team image
+    switch (this.props.teamName.awayTeam) {
+      case "Bucks":
+        this.setState({
+          oppImage: (
+            <Image
+              style={this.state.imageStyle}
+              source={require("../../Images/bucks.jpg")}
+            />
+          )
+        });
+        break;
+      case "blazerss":
+        this.setState({
+          oppImage: (
+            <Image
+              style={this.state.imageStyle}
+              source={require("../../Images/blazers.jpeg")}
+            />
+          )
+        });
+        break;
+      case "Jazz":
+        this.setState({
+          oppImage: (
+            <Image
+              style={this.state.imageStyle}
+              source={require("../../Images/jazz.png")}
+            />
+          )
+        });
+        break;
+      case "Nuggets":
+        this.setState({
+          oppImage: (
+            <Image
+              style={this.state.imageStyle}
+              source={require("../../Images/nuggets.jpg")}
+            />
+          )
+        });
+        break;
+      case "Rockets":
+        this.setState({
+          oppImage: (
+            <Image
+              style={this.state.imageStyle}
+              source={require("../../Images/rockets.png")}
+            />
+          )
+        });
+        break;
+      case "Warriors":
+        this.setState({
+          oppImage: (
+            <Image
+              style={this.state.imageStyle}
+              source={require("../../Images/warriors.png")}
+            />
+          )
+        });
+        break;
+      default:
+        this.setState({
+          oppImage: (
+            <Image
+              style={this.state.imageStyle}
+              source={require("../../Images/all.png")}
+            />
+          )
+        });
+    }
   }
   onButtonPress() {
     var url =
@@ -89,7 +258,7 @@ class MatchupConfirm extends Component {
         this.props.setHomeScore(response.Results.output1[0]["Scored Labels"]);
       })
       .then(() => {
-        ////////////////////////////////////// predict the oppTeam's score //////////////////////////////////////////////////////
+        ////////////////////////////////////// predict the oppTeam's score ////////////////////////////////
         fetch(url, {
           method: "POST",
           body: JSON.stringify({
@@ -165,6 +334,7 @@ class MatchupConfirm extends Component {
       });
   }
   render() {
+    const { cardSectionStyle, buttonStyle } = styles;
     if (this.props.loading) {
       return <Spinner size="large" />;
     } else {
@@ -178,9 +348,15 @@ class MatchupConfirm extends Component {
               {this.props.teamName.homeTeam} vs {this.props.teamName.awayTeam}
             </Text>
           </CardSection>
-          <CardSection />
+          <CardSection style={cardSectionStyle}>
+            {this.state.homeImage}
+          </CardSection>
+          <Text>-VS-</Text>
+          <CardSection style={cardSectionStyle}>
+            {this.state.oppImage}
+          </CardSection>
           <CardSection>
-            <Button onPress={this.onButtonPress.bind(this)}>
+            <Button style={buttonStyle} onPress={this.onButtonPress.bind(this)}>
               Predict Score
             </Button>
           </CardSection>
@@ -196,6 +372,27 @@ const mapStateToProps = state => {
     teamData: state.team.teamData,
     loading: state.team.loading
   };
+};
+
+const styles = {
+  pickerTextStyle: {
+    fontSize: 18,
+    paddingLeft: 20
+  },
+  cardSectionStyle: {
+    justifyContent: "center",
+    alignItems: "stretch"
+  },
+  containerStyle: {
+    backgroundColor: "rgba(0,0,0,0.75",
+    position: "relative",
+    flex: 1,
+    justifyContent: "center"
+  },
+  buttonStyle: {
+    flex: 1,
+    alignItems: "stretch"
+  }
 };
 
 export default connect(

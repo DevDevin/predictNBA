@@ -7,7 +7,6 @@ import {
   SET_OPP_SCORE,
   SET_LOADING_FALSE
 } from "../actions/Types";
-import { callPredictionModel } from "../components/Calc/ScoreCalc";
 
 export const goClick = () => {
   Actions.main();
@@ -18,7 +17,6 @@ export const goToAwayTeam = () => {
 };
 
 export const homeTeamUpdate = ({ prop, value }) => {
-  console.log("home team: ", value);
   return {
     type: HOME_TEAM_UPDATE,
     payload: { prop, value }

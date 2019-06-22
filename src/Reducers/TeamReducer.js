@@ -17,11 +17,12 @@ export default (state = INITIAL_STATE, action) => {
   console.log("inside of teams reducer");
   switch (action.type) {
     case HOME_TEAM_UPDATE:
-      console.log("test:", action.payload);
+      console.log("HOME_TEAM_UPDATE:", action.payload);
       return {
         ...state,
         [action.payload.prop]: action.payload.value,
-        loading: false
+        loading: false,
+        homeImage: "../../Images/blazers.jpeg"
       };
     case AWAY_TEAM_UPDATE:
       return {
