@@ -70,6 +70,16 @@ class MatchupConfirm extends Component {
           )
         });
         break;
+      case "Raptors":
+        this.setState({
+          homeImage: (
+            <Image
+              style={this.state.imageStyle}
+              source={require("../../Images/raptors.png")}
+            />
+          )
+        });
+        break;
       case "Nuggets":
         this.setState({
           homeImage: (
@@ -142,6 +152,16 @@ class MatchupConfirm extends Component {
             />
           )
         });
+      case "Raptors":
+        this.setState({
+          oppImage: (
+            <Image
+              style={this.state.imageStyle}
+              source={require("../../Images/raptors.png")}
+            />
+          )
+        });
+        break;
         break;
       case "Nuggets":
         this.setState({

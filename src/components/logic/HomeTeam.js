@@ -36,19 +36,19 @@ class HomeTeam extends Component {
   }
 
   setImage(value) {
-    console.log("inside setImage", value);
+    console.log("inside set home image", value);
     switch (value) {
       case "Bucks":
         this.setState({
           image: (
             <Image
               style={this.state.imageStyle}
-              source={require("../../Images/blazers.jpeg")}
+              source={require("../../Images/bucks.jpg")}
             />
           )
         });
         break;
-      case "blazerss":
+      case "Blazers":
         this.setState({
           image: (
             <Image
@@ -63,7 +63,7 @@ class HomeTeam extends Component {
           image: (
             <Image
               style={this.state.imageStyle}
-              source={require("../../Images/blazers.jpeg")}
+              source={require("../../Images/jazz.png")}
             />
           )
         });
@@ -73,7 +73,7 @@ class HomeTeam extends Component {
           image: (
             <Image
               style={this.state.imageStyle}
-              source={require("../../Images/blazers.jpeg")}
+              source={require("../../Images/nuggets.jpg")}
             />
           )
         });
@@ -83,7 +83,7 @@ class HomeTeam extends Component {
           image: (
             <Image
               style={this.state.imageStyle}
-              source={require("../../Images/blazers.jpeg")}
+              source={require("../../Images/rockets.png")}
             />
           )
         });
@@ -93,7 +93,17 @@ class HomeTeam extends Component {
           image: (
             <Image
               style={this.state.imageStyle}
-              source={require("../../Images/blazers.jpeg")}
+              source={require("../../Images/warriors.png")}
+            />
+          )
+        });
+        break;
+      case "Raptors":
+        this.setState({
+          image: (
+            <Image
+              style={this.state.imageStyle}
+              source={require("../../Images/raptors.png")}
             />
           )
         });
@@ -103,7 +113,7 @@ class HomeTeam extends Component {
           image: (
             <Image
               style={this.state.imageStyle}
-              source={require("../../Images/blazers.jpeg")}
+              source={require("../../Images/all.png")}
             />
           )
         });

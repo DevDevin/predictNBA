@@ -30,14 +30,14 @@ class AwayTeam extends Component {
   }
 
   setImage(value) {
-    console.log("inside setImage", value);
+    console.log("inside set away image", value);
     switch (value) {
       case "Bucks":
         this.setState({
           image: (
             <Image
               style={this.state.imageStyle}
-              source={require("../../Images/blazers.jpeg")}
+              source={require("../../Images/bucks.jpg")}
             />
           )
         });
@@ -57,7 +57,7 @@ class AwayTeam extends Component {
           image: (
             <Image
               style={this.state.imageStyle}
-              source={require("../../Images/blazers.jpeg")}
+              source={require("../../Images/jazz.png")}
             />
           )
         });
@@ -67,7 +67,7 @@ class AwayTeam extends Component {
           image: (
             <Image
               style={this.state.imageStyle}
-              source={require("../../Images/blazers.jpeg")}
+              source={require("../../Images/nuggets.jpg")}
             />
           )
         });
@@ -77,7 +77,7 @@ class AwayTeam extends Component {
           image: (
             <Image
               style={this.state.imageStyle}
-              source={require("../../Images/blazers.jpeg")}
+              source={require("../../Images/rockets.png")}
             />
           )
         });
@@ -87,7 +87,17 @@ class AwayTeam extends Component {
           image: (
             <Image
               style={this.state.imageStyle}
-              source={require("../../Images/blazers.jpeg")}
+              source={require("../../Images/warriors.png")}
+            />
+          )
+        });
+        break;
+      case "Raptors":
+        this.setState({
+          image: (
+            <Image
+              style={this.state.imageStyle}
+              source={require("../../Images/raptors.png")}
             />
           )
         });
@@ -97,7 +107,7 @@ class AwayTeam extends Component {
           image: (
             <Image
               style={this.state.imageStyle}
-              source={require("../../Images/blazers.jpeg")}
+              source={require("../../Images/all.png")}
             />
           )
         });
@@ -119,7 +129,7 @@ class AwayTeam extends Component {
             }}
           >
             <Picker.Item label="Warriors" value="Warriors" />
-            <Picker.Item label="Trail Blazers" value="Trail Blazers" />
+            <Picker.Item label="Trail Blazers" value="Blazers" />
             <Picker.Item label="Rockets" value="Rockets" />
             <Picker.Item label="Nuggets" value="Nuggets" />
             <Picker.Item label="Bucks" value="Bucks" />
