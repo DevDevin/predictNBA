@@ -15,14 +15,16 @@ class HomeTeam extends Component {
       <Image
         style={{
           width: 400,
-          height: 300
+          height: 400,
+          borderRadius: 400 / 2
         }}
         source={require("../../Images/all.png")}
       />
     ),
     imageStyle: {
       width: 300,
-      height: 300
+      height: 300,
+      borderRadius: 300 / 2
     },
     homeTeam: ""
   };

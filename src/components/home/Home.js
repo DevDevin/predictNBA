@@ -17,11 +17,14 @@ class Home extends Component {
     //this.props.goClick();
   }
   render() {
-    const { cardSectionStyle, buttonStyle, textStyle } = styles;
+    const { cardSectionStyle, buttonStyle, textStyle, imageStyle } = styles;
     return (
       <Card>
         <CardSection style={cardSectionStyle}>
-          <Image source={require(`../../Images/nbaLogo.png`)} />
+          <Image
+            style={imageStyle}
+            source={require(`../../Images/nbaLogo.png`)}
+          />
         </CardSection>
         <CardSection>
           <Text style={textStyle}>
@@ -44,7 +47,11 @@ const styles = {
     justifyContent: "center",
     alignItems: "stretch"
   },
-
+  imageStyle: {
+    width: 350,
+    height: 325,
+    borderRadius: 325 / 2
+  },
   containerStyle: {
     backgroundColor: "rgba(0,0,0,0.75",
     position: "relative",
